@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+
 import './App.css'
 
 type ProdutoType = {
@@ -18,20 +19,19 @@ function App() {
     .then(dados=>setProdutos(dados))
   },[])
   function handleExcluir(id:number){
-    alert("Tentando Excluir:"+id)
     fetch(`http://localhost:8000/produtos/${id}`,{
       method:"DELETE"
     })
     .then(resposta=>{
       if(resposta.status==200){
-        alert("Excluido com sucesso")
+        alert("Excluído com sucesso")
         window.location.reload()
-    }
-    else{
-      alert("Erro ao excluir")
-    }
-  })
-}
+      }
+      else{
+        alert("Erro ao excluir")
+      }
+    })
+  }
 
   return (
     <>  
